@@ -1,33 +1,14 @@
 import React from 'react'
-import { Navbar, Nav, Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
+
 import AboutImg from '../../assets/images/dis.jpeg';
+import Header from '../common/Header';
+import Footer from '../common/Footer';
 
 const Home = () => {
   return (
     <>
-    <header>
-        <div className='container'>
-        <Navbar bg="dark" variant="dark" expand="lg">
-      <Container>
-        {/* Logo Section */}
-        <Navbar.Brand href="/">HGF</Navbar.Brand>
-
-        {/* Toggler for Mobile View */}
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          {/* Navigation Links */}
-          <Nav className="ms-auto">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/about-us">About Us</Nav.Link>
-            <Nav.Link as={Link} to="/services">Services</Nav.Link>
-            <Nav.Link as={Link} to="/blogs">Blogs</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-        </div>
-    </header>
+<Header/>
     <main>
         {/* hero section */}
         <section className='section-1 container'>
@@ -63,47 +44,7 @@ const Home = () => {
             </div>
         </section>
     </main>
-    <footer>
-        <div className='container'>
-            <div className="row yoo">
-                
-                <div className="col-md-3 mt-5">
-                    <h3 className='mb-3'>ZM construction</h3>
-                    <p>At ZM Construction, we offer expert project management services to guide your project from concept to completion. Our team ensures that every phase is executed smoothly, efficiently, and on budget.</p>
-                </div>
-                <div className="col-md-3 mt-5">
-                    <h3 className='mb-3'>Our Services</h3>
-                    <ul>
-                        <li><a href="">special construction</a></li>
-                        <li><a href="">special construction</a></li>
-                        <li><a href="">special construction</a></li>
-                        <li><a href="">special construction</a></li>
-                    </ul>
-                </div>
-                <div className="col-md-3 mt-5">
-                <h3 className='mb-3'>Quick Links</h3>
-                    <ul>
-                        <li><a href="">About us</a></li>
-                        <li><a href="">Services</a></li>
-                        <li><a href="">Blogs</a></li>
-                        <li><a href="">Projects</a></li>
-                        <li><a href="">Contact us</a></li>
-                    </ul>
-                </div>
-                <div className="col-md-3 mt-5">
-                <h3 className='mb-3'>Contact Us</h3>
-                    <ul>
-                        <li><a href="">Phone:0178764544</a></li>
-                        <li><a href="">zm@gmail.com</a></li>
-                        <li><a href="">our address,special construction</a></li>
-                         
-                    </ul>
-                </div>
-               <hr />
-               <div className='text-center pt-2 pb-4'>Copyright © 2025 ZM Construction. All Rights Reserved</div>
-            </div>
-        </div>
-    </footer>
+<Footer/>
     </>
   );
 }

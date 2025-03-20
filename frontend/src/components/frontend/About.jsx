@@ -1,10 +1,16 @@
 import React from 'react';
+import Header from '../common/Header';
+import Footer from '../common/Footer';
 
 const about = () => {
     return (
-        <div>
+        <>
+            <div className="container">
+            <Header/>
             this is about
-        </div>
+            <Footer/>
+            </div>
+        </>
     );
 };
 
