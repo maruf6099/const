@@ -64,4 +64,16 @@ body{
     background-color: red; /* Change background to red on hover */
     cursor: pointer; /* Changes cursor to pointer on hover */
   }
+
+  .section-2{
+    img{
+        border-radius: 40px;
+    }
+    span{
+        padding-bottom: 50px;
+        color: #FFB703;
+        font-weight: 500;
+        font-size: 1.2em;
+    }
+  }
   
