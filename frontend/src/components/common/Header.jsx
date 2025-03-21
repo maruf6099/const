@@ -5,7 +5,7 @@ const Header = () => {
     return (
         <div>
         <header>
-        <div className='container'>
+        <div className=''>
         <Navbar bg="dark" variant="dark" expand="lg">
       <Container>
         {/* Logo Section */}
