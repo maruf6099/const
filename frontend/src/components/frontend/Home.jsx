@@ -13,6 +13,7 @@ import Icon2 from '../../assets/images/icon-2.svg'
 import Icon3 from '../../assets/images/icon-3.svg'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import AvtImg from '../../assets/images/avt1.jpg'
+import BlgImg from '../../assets/images/blg1.jpeg'
 import 'swiper/css';
 import {  Pagination } from 'swiper/modules';
 import 'swiper/css/pagination';
@@ -422,6 +423,62 @@ const Home = () => {
                    
                 </div>
             </div>
+        </section>
+
+        {/* Blogs & news */}
+        <section className="section-6 py-6">
+            <div className="container ">
+            <div className="section-header text-center">
+                <span>Blogs & news</span>
+                <h2>Articles and Blog posts</h2>
+                <p>Whether you’re looking to build your dream home or undertake a major renovation, we work closely with you to bring your vision to life</p>
+            </div>
+            <div className="row">
+                <div className="col-md-4">
+                 <div className="container">
+                 <div className="item">
+                        <Card style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src={BlgImg} />
+                    <Card.Body>
+                        <Card.Title>Pirgong Project</Card.Title>
+                        
+                        <Button variant="primary">Read more</Button>
+                    </Card.Body>
+                    </Card>
+                        </div>
+                 </div>
+                </div>
+                <div className="col-md-4">
+                 <div className="container">
+                 <div className="item">
+                        <Card style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src={BlgImg} />
+                    <Card.Body>
+                        <Card.Title>Pirgong Project</Card.Title>
+                        
+                        <Button variant="primary">Read more</Button>
+                    </Card.Body>
+                    </Card>
+                        </div>
+                 </div>
+                </div>
+                <div className="col-md-4">
+                 <div className="container">
+                 <div className="item">
+                        <Card style={{ width: '18rem' }}>
+                    <Card.Img variant="top" src={ChsImg} />
+                    <Card.Body>
+                        <Card.Title>Pirgong Project</Card.Title>
+                        
+                        <Button variant="primary">Read more</Button>
+                    </Card.Body>
+                    </Card>
+                        </div>
+                 </div>
+                </div>
+            </div>
+            </div>
+            
         </section>
     </main>
 <Footer/>
