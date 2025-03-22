@@ -115,4 +115,29 @@ ul{
     border-radius: 40px;
 }
 }
+.section-5{
+    .swiper{
+        padding: 25px 25px 50px 25px;
+    }
+    .card{
+        border-radius: 40px;
+        .rating{
+            color: #FFB703;
+        }
+        .contents{
+            p{
+                font-size: 12px;
+            }   
+        }
+        .name{
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+        .meta{
+            img{
+                border-radius: 50%;
+            }
+        }
+    }
+}
 
