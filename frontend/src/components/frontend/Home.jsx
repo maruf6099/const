@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container } from 'react-bootstrap';
 
-import AboutImg from '../../assets/images/dis.jpeg';
+
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 import SerImg from '../../assets/images/ser1.jpeg'
@@ -17,6 +17,7 @@ import BlgImg from '../../assets/images/blg1.jpeg'
 import 'swiper/css';
 import {  Pagination } from 'swiper/modules';
 import 'swiper/css/pagination';
+import About from '../common/About';
 
 const Home = () => {
   return (
@@ -43,19 +44,7 @@ const Home = () => {
             </div>
         </section>
         {/* About Us section */}
-        <section className='section-2 container py-5'>
-            <div className='row py-5'>
-                <div className='col-md-6'>
-                    <img src={AboutImg} className='w-100' alt="o" />
-                </div>
-                <div className='col-md-6'>
-                    <span>About us</span>
-                    <h2>Quality Construction, Trusted Results</h2>
-                    <p>ZM Construction is a reliable and innovative construction company committed to delivering high-quality projects on time and within budget. With a focus on excellence and attention to detail, ZM Construction has built a strong reputation in the industry for its expertise in residential, commercial, and industrial construction. The company offers a wide range of services, including project management, design-build solutions, general contracting, and renovations.</p>
-                    <p>Whether it's constructing new buildings, completing complex renovations, or offering consultation services, ZM Construction approaches each project with a client-centered mindset. The team is composed of experienced professionals who are skilled in all aspects of construction, from planning and design to execution and completion.</p>
-                </div>
-            </div>
-        </section>
+        <About/>
         {/* our services */}
         <section className="section-3 bg-light text-center py-5">
             <div className='container-fluid  py-5'>
