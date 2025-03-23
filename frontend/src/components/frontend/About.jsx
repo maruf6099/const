@@ -6,6 +6,7 @@ import {default as AboutNew} from '../common/About';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import BlgImg from '../../assets/images/mem1.jpeg'
+import Hero from '../common/Hero';
 
 const about = () => {
     return (
@@ -13,25 +14,10 @@ const about = () => {
            
         <Header/>
         <main>
-            {/* hero section */}
-        <section className='section-7'>
-        
-        <div className='hero d-flex align-items-center'>
-            <div className='container'>
-            <div className="overlay">
-                <div className='text-left'>
-                    <span>You trust our quality</span>
-                    <h1>About Us</h1>
-                    <p>At HR Construction, we bring your vision to life with quality craftsmanship, attention to detail, and on-time delivery. Specializing in residential and commercial projects,we build strong, sustainable structures that stand the test of time.</p>
-                    <div className='mt-4'>
-                    <a className="btn btn-custom">Click Me</a>
-                    <a className="btn btn-custom2 ms-2">Click Me</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </section>
+         {/* hero section */}
+         <Hero preHeading="You trust our quality"
+         heading="About Us" text="At HR Construction, we bring your vision to life with quality craftsmanship, attention to detail, and on-time delivery. Specializing in residential and commercial projects,we build strong, sustainable structures that stand the test of time."
+         />
     <AboutNew/>
     <section className="section-8">
         <div className="container bg-light py-5">
