@@ -3,7 +3,7 @@ import Header from '../common/Header';
 import Footer from '../common/Footer';
 //import About from '../common/About';
 import {default as AboutNew} from '../common/About';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import BlgImg from '../../assets/images/mem1.jpeg'
 import Hero from '../common/Hero';
