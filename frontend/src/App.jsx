@@ -12,6 +12,9 @@ import Blogs from './components/frontend/Blogs';
 import ContactUs from './components/frontend/ContactUs';
 import Login from './components/backend/Login';
 
+import { ToastContainer,toast } from 'react-toastify';
+
+
 function App() {
   const [count, setCount] = useState(0)
 
@@ -30,6 +33,9 @@ function App() {
           <Route path='/admin/login' element={<Login/>}/>
         </Routes>
       </BrowserRouter>
+      <ToastContainer
+        position='top-center'
+      />
       
     </>
   )

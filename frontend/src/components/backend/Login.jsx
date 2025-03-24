@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 import { useForm } from "react-hook-form"
+import { toast } from 'react-toastify';
 
 const Login = () => {
 
@@ -23,6 +24,9 @@ const Login = () => {
                 body:JSON.stringify(data)
             });
             const result= await res.json();
+            if(result.status==false){
+                toast.error(result.message);
+            }
 
             console.log(result);
         }
