@@ -13,6 +13,7 @@ import ContactUs from './components/frontend/ContactUs';
 import Login from './components/backend/Login';
 
 import { ToastContainer,toast } from 'react-toastify';
+import Dashboard from './components/backend/Dashboard';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
 
 
           <Route path='/admin/login' element={<Login/>}/>
+          <Route path='/admin/dashboard' element={<Dashboard/>}/>
         </Routes>
       </BrowserRouter>
       <ToastContainer
