@@ -3,8 +3,11 @@ import Header from '../common/Header';
 import Footer from '../common/Footer';
 import { useForm } from "react-hook-form"
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+
+    const navigate=useNavigate();
 
         const {
           register,
@@ -26,6 +29,8 @@ const Login = () => {
             const result= await res.json();
             if(result.status==false){
                 toast.error(result.message);
+            }else{
+                navigate('/admin/dashboard')
             }
 
             console.log(result);
