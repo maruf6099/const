@@ -188,4 +188,20 @@ ul{
         min-height: 400px;
     }
 }
-
+.sidebar{
+    ul{
+        li{
+            text-align: left;
+            a{
+                text-decoration: none;
+                color: #4d3702;
+                display: block;
+                padding: 5px 0;
+                border-bottom: 1px solid rgba(0,0,0,0.8);
+            }
+            a:hover{
+                color: #ff1818;
+            }
+        }
+    }
+}
