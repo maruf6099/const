@@ -22,6 +22,7 @@ Route::group(['middleware'=>['auth:sanctum']],function(){
     //Services route
     Route::post('services',[ServiceController::class,'store']);
     Route::get('services',[ServiceController::class,'index']);
+    Route::put('services/{id}',[ServiceController::class,'update']);
 
     //TempImage
     Route::post('temp-image',[TempImageController::class,'store']);

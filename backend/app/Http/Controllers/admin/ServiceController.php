@@ -81,9 +81,38 @@ class ServiceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request, $id)
     {
-        //
+        $service=Service::find($id);
+        if($service==null){
+            return response()->json([
+                'status'=>false,
+                'message' => 'Services not found'
+            ]);
+        }
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'slug' => 'required|unique:services,slug,'.$id.',id',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'errors' => $validator->errors()
+            ]);
+        }
+        
+        $service->title=$request->title;
+        $service->slug=Str::slug($request->slug);
+        $service->short_desc=$request->short_desc;
+        $service->content=$request->content;
+        $service->status=$request->status;
+
+        $service->save();
+
+        return response()->json([
+            'status'=>true,
+            'message' => 'Services Updated Successfully'
+        ]);
     }
 
     /**
