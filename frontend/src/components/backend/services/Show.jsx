@@ -17,7 +17,8 @@ const Show = () => {
             },
         });
         const result=await res.json();
-        console.log(result);
+        setServices(result.data);
+        //console.log(result);
     }
     useEffect(()=>{
         fetchServices();
@@ -54,13 +55,22 @@ const Show = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {
+                                            services && services.map(service=>{
+                                    return(      
                                         <tr>
-                                            <td>s</td>
-                                            <td>s</td>
-                                            <td>d</td>
-                                            <td>d</td>
-                                            <td>d</td> 
-                                        </tr>
+                                            <td>{service.id}</td>
+                                            <td>{service.name}</td>
+                                            <td>{service.slug}</td>
+                                            <td>{service.status==1 ? "Active" : "Inactive"}</td>
+                                            <td>
+                                                <button className="btn btn-warning btn-sm">Edit</button>
+                                                <button className="btn btn-danger btn-sm ms-2">Delete</button>
+                                            </td> 
+                                        </tr>)  
+                                         })
+                                        }
+                                        
                                     </tbody>
                                 </table>
                                 
