@@ -4,9 +4,10 @@ import Header from '../../common/Header';
 import Footer from '../../common/Footer';
 import Sidebar from '../../common/Sidebar';
 import { apiUrl, token } from '../../common/Http';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useForm } from "react-hook-form"
+import { toast } from 'react-toastify';
 
 const Create = () => {
     const {
@@ -15,29 +16,30 @@ const Create = () => {
         watch,
         formState: { errors },
       } = useForm()
-      const onSubmit = (data) => {
-        console.log(data)
+
+      const navigate=useNavigate();
+
+      const onSubmit = async(data) => {
+         const res=await fetch(apiUrl+'services',{
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Accept": "application/json",
+                        "Authorization": `Bearer ${token()}`,
+                    },
+                    body:JSON.stringify(data)
+                });
+                const result=await res.json();
+                if(result.status==true){
+                    toast.success(result.message);
+                    navigate('/admin/services');
+                }else{
+                    toast.error(result.message);
+                }
+                console.log(result)
     }
 
-    
-    const [services,setServices]=useState([]);
-    
-        const fetchServices=async()=>{
-            const res=await fetch(apiUrl+'services',{
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                    "Authorization": `Bearer ${token()}`,
-                },
-            });
-            const result=await res.json();
-            setServices(result.data);
-            //console.log(result);
-        }
-        useEffect(()=>{
-            fetchServices();
-        },[]);
+
     return (
         <div>
              <Header/>
@@ -67,7 +69,6 @@ const Create = () => {
                                             })
 
                                         }
-                                        // {...register("title")}
                                         type="text"className={`form-control ${errors.title && 'is-invalid'}`} />
                                          {errors.title && <span className='invalid-feedback'>{errors.title?.message}</span>}
                                     </div>
@@ -81,7 +82,7 @@ const Create = () => {
 
                                         }
                                         type="text" className={`form-control ${errors.slug && 'is-invalid'}`} />
-                                        {errors.slug && <p>{errors.title?.message}</p>}
+                                        {errors.slug && <p>{errors.slug?.message}</p>}
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor=""className='form-label'>Short description</label>
