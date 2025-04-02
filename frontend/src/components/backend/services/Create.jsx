@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useState, useRef, useMemo } from 'react';
 import Header from '../../common/Header';
 import Footer from '../../common/Footer';
 import Sidebar from '../../common/Sidebar';
@@ -9,7 +9,19 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form"
 import { toast } from 'react-toastify';
 
-const Create = () => {
+import JoditEditor from 'jodit-react';
+
+const Create = ({placeholder}) => {
+    const editor = useRef(null);
+	const [content, setContent] = useState('');
+
+    const config = useMemo(() => ({
+        readonly: false, // all options from https://xdsoft.net/jodit/docs/,
+        placeholder: placeholder || 'Content'
+    }),
+    [placeholder]
+);
+
     const {
         register,
         handleSubmit,
@@ -20,6 +32,7 @@ const Create = () => {
       const navigate=useNavigate();
 
       const onSubmit = async(data) => {
+        const newData={...data,"content":content}
          const res=await fetch(apiUrl+'services',{
                     method: "POST",
                     headers: {
@@ -27,7 +40,7 @@ const Create = () => {
                         "Accept": "application/json",
                         "Authorization": `Bearer ${token()}`,
                     },
-                    body:JSON.stringify(data)
+                    body:JSON.stringify(newData)
                 });
                 const result=await res.json();
                 if(result.status==true){
@@ -61,8 +74,9 @@ const Create = () => {
                                 <hr/>
                                  <form onSubmit={handleSubmit(onSubmit)}>
                                     <div className="mb-3">
-                                        <label htmlFor="" className='form-label'>Name</label>
+                                        <label htmlFor="" className='form-label'>Title</label>
                                         <input
+                                        placeholder='Title'
                                         {
                                             ...register("title",{
                                                 required:"This field is required"
@@ -75,6 +89,7 @@ const Create = () => {
                                     <div className="mb-3">
                                         <label htmlFor=""className='form-label'>Slug</label>
                                         <input 
+                                        placeholder='Slug'
                                         {
                                             ...register("slug",{
                                                 required:"Slug field is required"
@@ -86,11 +101,19 @@ const Create = () => {
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor=""className='form-label'>Short description</label>
-                                        <textarea {...register("short_desc")} className='form-control'rows={4} />
+                                        <textarea {...register("short_desc")} className='form-control' placeholder='Write short description'rows={4} />
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor=""className='form-label'>Content</label>
-                                        <textarea {...register("content")} className='form-control'rows={5} />
+                                        {/* <textarea {...register("content")} className='form-control' placeholder='Write Content' rows={5} /> */}
+                                        <JoditEditor
+                                            ref={editor}
+                                            value={content}
+                                            config={config}
+                                            tabIndex={1} // tabIndex of textarea
+                                            onBlur={newContent => setContent(newContent)} // preferred to use only this option to update the content for performance reasons
+                                            onChange={newContent => {}}
+                                        />
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor=""className='form-label'>Status</label>
