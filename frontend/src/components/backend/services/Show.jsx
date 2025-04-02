@@ -3,6 +3,7 @@ import Header from '../../common/Header';
 import Footer from '../../common/Footer';
 import Sidebar from '../../common/Sidebar';
 import { apiUrl, token } from '../../common/Http';
+import { Link } from 'react-router-dom';
 
 const Show = () => {
     const [services,setServices]=useState([]);
@@ -40,7 +41,7 @@ const Show = () => {
                             <div className="card-body p-4">
                                 <div className="d-flex justify-content-between">
                                     <h4>Services</h4>
-                                    <a href="" className='btn btn-primary'>create</a>
+                                    <Link to="/admin/services/create" className='btn btn-primary'>create</Link>
                                 </div>
                                 <hr/>
                                 <table className='table table-striped'>
