@@ -6,8 +6,20 @@ import Sidebar from '../../common/Sidebar';
 import { apiUrl, token } from '../../common/Http';
 import { Link } from 'react-router-dom';
 
+import { useForm } from "react-hook-form"
 
 const Create = () => {
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+      } = useForm()
+      const onSubmit = (data) => {
+        console.log(data)
+    }
+
+    
     const [services,setServices]=useState([]);
     
         const fetchServices=async()=>{
@@ -45,26 +57,43 @@ const Create = () => {
                                     <Link to="/admin/services" className='btn btn-primary'>Back</Link>
                                 </div>
                                 <hr/>
-                                 <form>
+                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <div className="mb-3">
                                         <label htmlFor="" className='form-label'>Name</label>
-                                        <input type="text"className='form-control' />
+                                        <input
+                                        {
+                                            ...register("title",{
+                                                required:"This field is required"
+                                            })
+
+                                        }
+                                        // {...register("title")}
+                                        type="text"className={`form-control ${errors.title && 'is-invalid'}`} />
+                                         {errors.title && <span className='invalid-feedback'>{errors.title?.message}</span>}
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor=""className='form-label'>Slug</label>
-                                        <input type="text"className='form-control' />
+                                        <input 
+                                        {
+                                            ...register("slug",{
+                                                required:"Slug field is required"
+                                            })
+
+                                        }
+                                        type="text" className={`form-control ${errors.slug && 'is-invalid'}`} />
+                                        {errors.slug && <p>{errors.title?.message}</p>}
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor=""className='form-label'>Short description</label>
-                                        <textarea className='form-control'rows={4} />
+                                        <textarea {...register("short_desc")} className='form-control'rows={4} />
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor=""className='form-label'>Content</label>
-                                        <textarea className='form-control'rows={5} />
+                                        <textarea {...register("content")} className='form-control'rows={5} />
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor=""className='form-label'>Status</label>
-                                        <select className='form-control'>
+                                        <select {...register("status")} className='form-control'>
                                             <option value="1">Active</option>
                                             <option value="0">Block</option>
                                         </select>
