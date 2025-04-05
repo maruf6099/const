@@ -14,6 +14,8 @@ import JoditEditor from 'jodit-react';
 const Create = ({placeholder}) => {
     const editor = useRef(null);
 	const [content, setContent] = useState('');
+	const [isDisable, setIsDisable] = useState(false);
+	const [imageId, setImageId] = useState(null);
 
     const config = useMemo(() => ({
         readonly: false, // all options from https://xdsoft.net/jodit/docs/,
@@ -32,7 +34,7 @@ const Create = ({placeholder}) => {
       const navigate=useNavigate();
 
       const onSubmit = async(data) => {
-        const newData={...data,"content":content}
+        const newData={...data,"content":content,"imageId":imageId}
          const res=await fetch(apiUrl+'services',{
                     method: "POST",
                     headers: {
@@ -50,6 +52,53 @@ const Create = ({placeholder}) => {
                     toast.error(result.message);
                 }
                 console.log(result)
+    }
+    // const handleFile=async(e)=>{
+    //     const formData=new FormData();
+    //     const file=e.target.files[0];
+    //     formData.append("image",file);
+    //     //http://localhost:8000/api/temp-image?
+    //     await fetch(apiUrl+'temp-image',{
+    //         method: "POST",
+    //         headers: {
+    //             "Accept": "application/json",
+    //             "Authorization": `Bearer ${token()}`,
+    //         },
+    //         body:formData
+    //     }).then(res.json())
+    //     .then(result=>{
+    //         if(result.status==false){
+    //             toast.error(result.errors.image[0])
+    //         }else{
+    //             setImageId(result.data.id)
+    //         }
+    //     });
+    // }
+    const handleFile = async (e) => {
+        const formData = new FormData();
+        const file = e.target.files[0];
+        formData.append("image", file);
+    
+        await fetch(apiUrl + 'temp-image', {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Authorization": `Bearer ${token()}`,
+            },
+            body: formData
+        })
+        .then(res => res.json()) 
+        .then(result => {
+            if (result.status == false) {
+                toast.error(result.errors.image[0]);
+            } else {
+                setImageId(result.data.id);
+            }
+        })
+        .catch(error => {
+            console.error("Image upload error:", error);
+            toast.error("Image upload failed.");
+        });
     }
 
 
@@ -122,7 +171,12 @@ const Create = ({placeholder}) => {
                                             <option value="0">Block</option>
                                         </select>
                                     </div>
-                                    <button className='btn btn-success'>Submit</button>
+                                    <div className="mb-3">
+                                        <label htmlFor=""className='form-label'>Status</label>
+                                        <br />
+                                        <input onChange={handleFile} type='file'/>
+                                    </div>
+                                    <button disabled={isDisable} className='btn btn-success'>Submit</button>
                                  </form>
                                 
                             </div>

@@ -86,7 +86,7 @@ class ServiceController extends Controller
                 // ✅ Small image তৈরি করা (Resize)
                 $smallDestPath = public_path('uploads/services/small/');
                 if (!file_exists($smallDestPath)) {
-                    mkdir($smallDestPath, 0755, true);
+                    mkdir($smallDestPath, 0777, true);
                 }
         
                 $smallImg = $image->scale(width: 300);
@@ -95,7 +95,7 @@ class ServiceController extends Controller
                 // ✅ Large image তৈরি করা (Resize without crop)
                 $largeDestPath = public_path('uploads/services/large/');
                 if (!file_exists($largeDestPath)) {
-                    mkdir($largeDestPath, 0755, true);
+                    mkdir($largeDestPath, 0777, true);
                 }
         
                 $largeImg = $image->scale(width: 600);
