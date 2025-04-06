@@ -61,12 +61,12 @@ const Show = () => {
                                     return(      
                                         <tr key={service.id}>
                                             <td>{service.id}</td>
-                                            <td>{service.name}</td>
+                                            <td>{service.title}</td>
                                             <td>{service.slug}</td>
                                             <td>{service.status==1 ? "Active" : "Inactive"}</td>
                                             <td>
-                                                <button className="btn btn-warning btn-sm">Edit</button>
-                                                <button className="btn btn-danger btn-sm ms-2">Delete</button>
+                                                <Link to={`/admin/services/edit/${service.id}`} className="btn btn-warning btn-sm">Edit</Link>
+                                                <Link to={`admin/services/edit/${service.id}`} className="btn btn-danger btn-sm ms-2">Delete</Link>
                                             </td> 
                                         </tr>)  
                                          })
