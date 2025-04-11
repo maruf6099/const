@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../backend/context/Auth';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
 
@@ -10,8 +11,8 @@ const Sidebar = () => {
                 <div className="card-body p-4 sidebar">
                     <h4>Dashboard</h4>
                     <ul>
-                        <li><a href="">Dashboard</a></li>
-                        <li><a href="">Services</a></li>
+                        <li><Link to='/admin/dashboard'>Dashboard</Link></li>
+                        <li><Link to='/admin/services'>Services</Link></li>
                         <li><a href="">Project</a></li>
                         <li><a href="">Article</a></li>
                         <li>
